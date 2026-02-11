@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (window === window.top) {
+        window.location.replace("index.html?page=howicameupwiththenames.html");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find a name for the story</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style type="text/css">
+      body {
+        background: #cc9900;
+        color: #000000;
+        font-family: "Courier New", Courier, monospace;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-presets="react">
+      const { useState } = React;
+
+      const NameFinder = () => {
+        const [results, setResults] = useState([]);
+        const [isSearching, setIsSearching] = useState(false);
+
+        const names = [
+          "ACE",
+          "ADA",
+          "ALI",
+          "AMY",
+          "ANA",
+          "ANN",
+          "AVA",
+          "BEA",
+          "BEN",
+          "BOB",
+          "CAL",
+          "CAM",
+          "DAN",
+          "DEE",
+          "DON",
+          "ED",
+          "ELI",
+          "EVA",
+          "EVE",
+          "FAY",
+          "GAB",
+          "GAY",
+          "GUS",
+          "HAL",
+          "IAN",
+          "IDA",
+          "INA",
+          "IRA",
+          "IVY",
+          "JAY",
+          "JEN",
+          "JIM",
+          "JOE",
+          "JON",
+          "JOY",
+          "KAI",
+          "KAY",
+          "KEN",
+          "KIM",
+          "LEA",
+          "LEE",
+          "LEO",
+          "LIA",
+          "LIZ",
+          "LOU",
+          "MAC",
+          "MAE",
+          "MAX",
+          "MEG",
+          "MIA",
+          "NAT",
+          "NED",
+          "NEL",
+          "NIA",
+          "PAM",
+          "PAT",
+          "PIA",
+          "RAE",
+          "RAY",
+          "REX",
+          "ROB",
+          "RON",
+          "ROY",
+          "SAL",
+          "SAM",
+          "SKY",
+          "SUE",
+          "TAD",
+          "TED",
+          "TIM",
+          "TOM",
+          "VAL",
+          "VIC",
+          "WES",
+          "ZOE",
+          "ABEL",
+          "ADAM",
+          "ALAN",
+          "ALEX",
+          "AMOS",
+          "ANDY",
+          "ANNA",
+          "ANNE",
+          "APRIL",
+          "AXEL",
+          "BART",
+          "BEAN",
+          "BEAR",
+          "BETH",
+          "BILL",
+          "BRAD",
+          "BRET",
+          "CADE",
+          "CAIN",
+          "CARL",
+          "CHAD",
+          "CHER",
+          "CHIP",
+          "CHLOE",
+          "CHRIS",
+          "CHUCK",
+          "CLAY",
+          "COLE",
+          "CORA",
+          "DALE",
+          "DANA",
+          "DAVE",
+          "DAWN",
+          "DEAN",
+          "DEMI",
+          "DICK",
+          "DINA",
+          "DIRK",
+          "DORA",
+          "DOUG",
+          "DREW",
+          "EARL",
+          "EDEN",
+          "EDNA",
+          "ELDA",
+          "ELLA",
+          "ELLE",
+          "ELSA",
+          "EMIL",
+          "EMMA",
+          "ERIC",
+          "ERIN",
+          "EVAN",
+          "EZRA",
+          "FAYE",
+          "FERN",
+          "FINN",
+          "FRAN",
+          "FRED",
+          "GABE",
+          "GAIL",
+          "GARY",
+          "GENE",
+          "GINA",
+          "GLEN",
+          "GREG",
+          "GWEN",
+          "HANK",
+          "HANS",
+          "HOPE",
+          "HUGH",
+          "HUGO",
+          "IRIS",
+          "IRMA",
+          "IVAN",
+          "JACK",
+          "JADE",
+          "JAKE",
+          "JANE",
+          "JEAN",
+          "JEFF",
+          "JILL",
+          "JOAN",
+          "JODI",
+          "JOEL",
+          "JOHN",
+          "JOSE",
+          "JUAN",
+          "JUDE",
+          "JUDY",
+          "JUNE",
+          "KARA",
+          "KARL",
+          "KATE",
+          "KATY",
+          "KENT",
+          "KIRK",
+          "KIT",
+          "KURT",
+          "KYLE",
+          "LANA",
+          "LANE",
+          "LARS",
+          "LEAH",
+          "LEON",
+          "LEVI",
+          "LIAM",
+          "LILY",
+          "LINA",
+          "LISA",
+          "LOIS",
+          "LOLA",
+          "LORI",
+          "LUCY",
+          "LUIS",
+          "LUKE",
+          "LUNA",
+          "LYNN",
+          "MACK",
+          "MARC",
+          "MARK",
+          "MARY",
+          "MATT",
+          "MAYA",
+          "MIKE",
+          "MILA",
+          "MILO",
+          "MINA",
+          "MONA",
+          "NATE",
+          "NEAL",
+          "NEIL",
+          "NICK",
+          "NINA",
+          "NOAH",
+          "NOEL",
+          "NORA",
+          "OLGA",
+          "OMAR",
+          "OTTO",
+          "OWEN",
+          "PAGE",
+          "PAUL",
+          "PETE",
+          "PHIL",
+          "PIPER",
+          "RAIN",
+          "RAJA",
+          "RALF",
+          "RAND",
+          "REED",
+          "REID",
+          "RENA",
+          "RENE",
+          "REX",
+          "RHEA",
+          "RICK",
+          "RITA",
+          "ROB",
+          "ROCK",
+          "ROSA",
+          "ROSE",
+          "ROSS",
+          "RUBY",
+          "RUSS",
+          "RUTH",
+          "RYAN",
+          "SAGE",
+          "SARA",
+          "SAUL",
+          "SEAN",
+          "SETH",
+          "SHANE",
+          "SHAWN",
+          "STAN",
+          "STAR",
+          "TARA",
+          "THEO",
+          "TODD",
+          "TONY",
+          "TORI",
+          "TROY",
+          "TY",
+          "TYLER",
+          "URSA",
+          "VERA",
+          "VERN",
+          "WADE",
+          "WALT",
+          "WARD",
+          "WILL",
+          "WYAT",
+          "YURI",
+          "ZACH",
+          "ZANE",
+          "ZARA",
+          "ZEKE",
+          "ZION",
+          "DANIEL",
+          "DAVID",
+          "JAMES",
+          "JOHN",
+          "ROBERT",
+          "MICHAEL",
+          "WILLIAM",
+          "RICHARD",
+          "JOSEPH",
+          "THOMAS",
+          "CHARLES",
+          "CHRISTOPHER",
+          "MATTHEW",
+          "ANTHONY",
+          "DONALD",
+          "MARK",
+          "PAUL",
+          "STEVEN",
+          "ANDREW",
+          "KENNETH",
+          "JOSHUA",
+          "BRIAN",
+          "GEORGE",
+          "KEVIN",
+          "EDWARD",
+          "RONALD",
+          "TIMOTHY",
+          "JASON",
+          "JEFFREY",
+          "RYAN",
+          "JACOB",
+          "GARY",
+          "NICHOLAS",
+          "ERIC",
+          "JONATHAN",
+          "STEPHEN",
+          "LARRY",
+          "JUSTIN",
+          "SCOTT",
+          "BRANDON",
+          "FRANK",
+          "BENJAMIN",
+          "GREGORY",
+          "RAYMOND",
+          "SAMUEL",
+          "PATRICK",
+          "ALEXANDER",
+          "JACK",
+          "DENNIS",
+          "JERRY",
+          "TYLER",
+          "AARON",
+          "JOSE",
+          "HENRY",
+          "DOUGLAS",
+          "ADAM",
+          "PETER",
+          "NATHAN",
+          "ZACHARY",
+          "WALTER",
+          "KYLE",
+          "HAROLD",
+          "CARL",
+          "JEREMY",
+          "KEITH",
+          "ROGER",
+          "GERALD",
+          "ETHAN",
+          "ARTHUR",
+          "TERRY",
+          "CHRISTIAN",
+          "SEAN",
+          "AUSTIN",
+          "JOE",
+          "ALBERT",
+          "JESSE",
+          "WILLIE",
+          "BILLY",
+          "BRYAN",
+          "BRUCE",
+          "NOAH",
+          "JORDAN",
+          "DYLAN",
+          "RALPH",
+          "ROY",
+          "EUGENE",
+          "RANDY",
+          "VINCENT",
+          "RUSSELL",
+          "LOUIS",
+          "PHILIP",
+          "BOBBY",
+          "JOHNNY",
+          "BRADLEY",
+        ];
+
+        const shiftName = (name) => {
+          let result = "";
+          for (let i = 0; i < name.length; i++) {
+            const char = name[i];
+            const shift = i + 1;
+            const charCode = char.charCodeAt(0);
+            const newCharCode = charCode + shift;
+            if (newCharCode > 90) {
+              result += String.fromCharCode(65 + (newCharCode - 91));
+            } else {
+              result += String.fromCharCode(newCharCode);
+            }
+          }
+          return result;
+        };
+
+        const findMatches = () => {
+          setIsSearching(true);
+          const matches = [];
+          const nameSet = new Set(names);
+          for (const name of names) {
+            const shifted = shiftName(name);
+            if (nameSet.has(shifted)) {
+              matches.push({
+                original: name,
+                shifted: shifted,
+                steps: name.split("").map((char, i) => ({
+                  char,
+                  shift: i + 1,
+                  result: shifted[i],
+                })),
+              });
+            }
+          }
+          setResults(matches);
+          setIsSearching(false);
+        };
+
+        return (
+          <div
+            style={{
+              minHeight: "100vh",
+              background: "#CC9900",
+              padding: "2rem",
+              fontFamily: '"Courier New", Courier, monospace',
+            }}
+          >
+            <div
+              style={{
+                maxWidth: "36rem",
+                margin: "0 auto",
+                textAlign: "center",
+              }}
+            >
+              <h1
+                style={{
+                  fontFamily: '"Courier New", Courier, monospace',
+                  fontSize: "22px",
+                  color: "#FFFFFF",
+                  fontWeight: 600,
+                  marginBottom: "1rem",
+                }}
+              >
+                Find a name for the story
+              </h1>
+              <p
+                style={{
+                  fontFamily: '"Courier New", Courier, monospace',
+                  fontSize: "16px",
+                  color: "#FFFFFF",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Find names where each letter shifted by its position (+1, +2,
+                +3...) creates another valid name.
+              </p>
+              <button
+                onClick={findMatches}
+                disabled={isSearching}
+                style={{
+                  fontFamily: '"Courier New", Courier, monospace',
+                  fontSize: "24px",
+                  fontWeight: 600,
+                  color: "#000000",
+                  background: "#FFFFFF",
+                  border: "2px solid #000000",
+                  padding: "0.5rem 1rem",
+                  cursor: isSearching ? "not-allowed" : "pointer",
+                }}
+              >
+                {isSearching ? "Searching..." : "Click"}
+              </button>
+              {results.length > 0 && (
+                <div style={{ marginTop: "2rem", textAlign: "left" }}>
+                  <h2
+                    style={{
+                      fontFamily: '"Courier New", Courier, monospace',
+                      fontSize: "22px",
+                      color: "#FFFFFF",
+                      fontWeight: 600,
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    Found {results.length} match
+                    {results.length !== 1 ? "es" : ""}!
+                  </h2>
+                  {results.map((match, idx) => (
+                    <div
+                      key={idx}
+                      style={{
+                        background: "#000000",
+                        color: "#FFFFFF",
+                        padding: "1rem 1.5rem",
+                        marginBottom: "1rem",
+                        border: "2px solid #FFFFFF",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "1rem",
+                          marginBottom: "0.75rem",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "22px",
+                            fontWeight: 600,
+                            color: "#FFFFFF",
+                          }}
+                        >
+                          {match.original}
+                        </span>
+                        <span style={{ color: "#CC9900", fontSize: "20px" }}>
+                          →
+                        </span>
+                        <span
+                          style={{
+                            fontSize: "22px",
+                            fontWeight: 600,
+                            color: "#FF0000",
+                          }}
+                        >
+                          {match.shifted}
+                        </span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "0.25rem",
+                        }}
+                      >
+                        {match.steps.map((step, i) => (
+                          <div
+                            key={i}
+                            style={{ fontSize: "14px", color: "#FFFFFF" }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: '"Courier New", Courier, monospace',
+                              }}
+                            >
+                              {step.char} + {step.shift} = {step.result}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {!isSearching && results.length === 0 && (
+                <div
+                  style={{
+                    marginTop: "2rem",
+                    color: "#FFFFFF",
+                    fontSize: "16px",
+                    textAlign: "center",
+                  }}
+                >
+                  Click the button to search for matching name pairs
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<NameFinder />);
+    </script>
+  </body>
+</html>

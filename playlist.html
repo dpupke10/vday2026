@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (window === window.top) {
+        window.location.replace("index.html?page=playlist.html");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist</title>
+    <style type="text/css">
+      body {
+        background: #000;
+        margin: 0;
+        padding: 0;
+      }
+      a:link,
+      a:visited,
+      a:hover {
+        color: #fff;
+      }
+      .header {
+        text-align: center;
+        font-family: "Courier New", Courier, mono;
+        color: #ffffff;
+        font-size: 22px;
+        padding: 1rem 0;
+      }
+      .header a {
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .content {
+        margin: auto;
+        width: 800px;
+        max-width: 90%;
+        text-align: left;
+        font-family: "Courier New", Courier, mono;
+        font-size: 1.2rem;
+        color: #fff;
+        padding: 2rem 0;
+      }
+      .content h2 {
+        font-family: "Courier New", Courier, mono;
+        color: #fff;
+        font-size: 1.5em;
+      }
+      .song-link {
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .song-link:hover {
+        text-decoration: underline;
+      }
+      .song-list {
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="home.html">Home</a>
+    </div>
+
+    <div class="content">
+      <h2>To Priya,</h2>
+      <p>
+        <b
+          >Here are some songs that are very important to me. They mean
+          different things, and are from different points in my life, but they
+          are songs found by me, enjoyed by me, and me alone. Not for anybody
+          else. Until you. These are songs that I think are the most "me". You
+          asked me this in Belgium and I did not give you an answer. I thought
+          about it, and here is my answer.</b
+        >
+      </p>
+      <div class="song-list">
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song1.mp3"
+          data-title="A Duel - Pablo's Eye"
+          >A Duel -</a
+        >
+        Pablo's Eye (5:29) <br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song2.mp3"
+          data-title="A Warm Place - Nine Inch Nails"
+          >A Warm Place -</a
+        >
+        Nine Inch Nails (3:23) <br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song3.mp3"
+          data-title="Printemps émeraude - Alcest"
+          >Printemps émeraude -</a
+        >
+        Alcest (7:19)<br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song4.mp3"
+          data-title="Arboretum - Unwound"
+          >Arboretum -</a
+        >
+        Unwound (4:55)<br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song5.mp3"
+          data-title="Nothing Else Matters - Bassvictim"
+          >Nothing Else Matters -</a
+        >
+        Bassvictim (2:55) <br />
+      </div>
+    </div>
+
+    <div
+      id="local-player"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: #000;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        font-family:
+          Courier New,
+          Courier,
+          mono;
+        font-size: 12px;
+        border: 2px solid #fff;
+        z-index: 1000;
+      "
+    >
+      <div
+        id="local-now-playing"
+        style="font-weight: 600; margin-bottom: 0.25rem"
+      >
+        —
+      </div>
+      <audio
+        id="local-audio"
+        controls
+        style="width: 100%; height: 32px"
+      ></audio>
+    </div>
+
+    <script>
+      function playSong(src, title) {
+        if (
+          window.parent !== window &&
+          typeof window.parent.playSong === "function"
+        ) {
+          window.parent.playSong(src, title);
+        } else {
+          var player = document.getElementById("local-player");
+          var audio = document.getElementById("local-audio");
+          var nowPlaying = document.getElementById("local-now-playing");
+          player.style.display = "block";
+          audio.src = src;
+          audio.play();
+          nowPlaying.textContent = title || "Playing...";
+        }
+      }
+      document.querySelectorAll(".song-link").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          playSong(this.dataset.src, this.dataset.title);
+        });
+      });
+    </script>
+  </body>
+</html>

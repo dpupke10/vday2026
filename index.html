@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Priya</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #cab68f;
+        font-family: "Courier New", Courier, mono;
+      }
+      .content-frame {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        display: block;
+      }
+      .audio-player {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: #663300;
+        color: #ffffff;
+        padding: 0.5rem 1rem;
+        font-family: "Courier New", Courier, mono;
+        font-size: 12px;
+        border: 2px solid #000000;
+        max-width: 280px;
+        z-index: 1000;
+      }
+      .audio-player .now-playing {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+      }
+      .audio-player audio {
+        width: 100%;
+        height: 32px;
+        margin-top: 0.25rem;
+      }
+      .audio-player audio::-webkit-media-controls-panel {
+        background: #663300;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      name="main"
+      id="main-frame"
+      class="content-frame"
+      src="home.html"
+    ></iframe>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var page = params.get("page");
+        if (page) {
+          document.getElementById("main-frame").src = page;
+        }
+      })();
+    </script>
+
+    <div class="audio-player" id="player-box">
+      <div class="now-playing" id="now-playing">—</div>
+      <audio id="global-audio" controls></audio>
+    </div>
+
+    <script>
+      window.playSong = function (src, title) {
+        var audio = document.getElementById("global-audio");
+        var nowPlaying = document.getElementById("now-playing");
+        audio.src = src;
+        audio.play();
+        nowPlaying.textContent = title || "Playing...";
+      };
+    </script>
+  </body>
+</html>
