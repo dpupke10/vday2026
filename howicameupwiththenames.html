@@ -22,14 +22,34 @@
       }
     </style>
   </head>
-  <body>
+  <body data-translate-page="howicameupwiththenames">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
     <div id="root"></div>
     <script type="text/babel" data-presets="react">
-      const { useState } = React;
+      const { useState, useEffect } = React;
 
       const NameFinder = () => {
         const [results, setResults] = useState([]);
         const [isSearching, setIsSearching] = useState(false);
+        const [lang, setLang] = useState(() =>
+          window.getLang ? window.getLang() : "en",
+        );
+
+        useEffect(() => {
+          const onLangChange = () =>
+            setLang(window.getLang ? window.getLang() : "en");
+          window.addEventListener("languagechange", onLangChange);
+          return () =>
+            window.removeEventListener("languagechange", onLangChange);
+        }, []);
+
+        const t = (key) => {
+          var tr =
+            window.TRANSLATIONS && window.TRANSLATIONS.howicameupwiththenames;
+          if (!tr || !tr[key]) return key;
+          return tr[key][lang] || tr[key].en || key;
+        };
 
         const names = [
           "ACE",
@@ -464,7 +484,7 @@
                   marginBottom: "1rem",
                 }}
               >
-                Find a name for the story
+                {t("title")}
               </h1>
               <p
                 style={{
@@ -474,8 +494,7 @@
                   marginBottom: "1.5rem",
                 }}
               >
-                Find names where each letter shifted by its position (+1, +2,
-                +3...) creates another valid name.
+                {t("subtitle")}
               </p>
               <button
                 onClick={findMatches}
@@ -491,7 +510,7 @@
                   cursor: isSearching ? "not-allowed" : "pointer",
                 }}
               >
-                {isSearching ? "Searching..." : "Click"}
+                {isSearching ? t("button_loading") : t("button")}
               </button>
               {results.length > 0 && (
                 <div style={{ marginTop: "2rem", textAlign: "left" }}>
@@ -504,8 +523,8 @@
                       marginBottom: "1rem",
                     }}
                   >
-                    Found {results.length} match
-                    {results.length !== 1 ? "es" : ""}!
+                    {t("found")} {results.length}{" "}
+                    {results.length !== 1 ? t("matches") : t("match")}!
                   </h2>
                   {results.map((match, idx) => (
                     <div
@@ -584,7 +603,7 @@
                     textAlign: "center",
                   }}
                 >
-                  Click the button to search for matching name pairs
+                  {t("placeholder")}
                 </div>
               )}
             </div>

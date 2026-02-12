@@ -59,21 +59,29 @@
       }
     </style>
   </head>
-  <body>
+  <body data-translate-page="playlist">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.applyTranslations) applyTranslations();
+      });
+    </script>
     <div class="header">
-      <a href="home.html">Home</a>
+      <a href="home.html" data-t="home">Home</a>
     </div>
 
     <div class="content">
-      <h2>To Priya,</h2>
-      <p>
+      <h2 data-t="title">To Priya,</h2>
+      <p data-t="intro">
         <b
           >Here are some songs that are very important to me. They mean
           different things, and are from different points in my life, but they
           are songs found by me, enjoyed by me, and me alone. Not for anybody
           else. Until you. These are songs that I think are the most "me". You
           asked me this in Belgium and I did not give you an answer. I thought
-          about it, and here is my answer.</b
+          about it, and here is my answer. You can play these while you look
+          through everything else.</b
         >
       </p>
       <div class="song-list">
@@ -117,6 +125,14 @@
           >Nothing Else Matters -</a
         >
         Bassvictim (2:55) <br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song6.mp3"
+          data-title="My Girl - The Rolling Stones"
+          >My Girl -</a
+        >
+        The Rolling Stones (2:38) <br />
       </div>
     </div>
 

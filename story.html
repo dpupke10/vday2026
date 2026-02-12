@@ -54,22 +54,28 @@
       }
     </style>
   </head>
-  <body>
+  <body data-translate-page="story">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.applyTranslations) applyTranslations();
+      });
+    </script>
     <div class="header">
-      <a href="home.html" style="text-decoration: none; font-weight: 600"
-        >Home</a
-      >
-      <span style="font-size: 10px"> - </span>
       <a
-        href="howicameupwiththenames.html"
-        style="text-decoration: none; font-weight: 200"
-        >Their names</a
+        href="home.html"
+        data-t="home"
+        style="text-decoration: none; font-weight: 600"
+        >Home</a
       >
     </div>
 
     <div class="content">
-      <h2>We're Red and It's Perfect. She's dead, and it's beautiful.</h2>
-      <p class="placeholder">
+      <h2 data-t="title">
+        We're Red and It's Perfect. She's dead, and it's beautiful.
+      </h2>
+      <p class="placeholder" data-t="content">
         Tears well up in my eyes. It hurts, why. Everyone's laughing at me. I
         can feel them staring at me. I was wearing my mothers gown. At school.
         How did this happen? The entire school was there, in the hall, in the
@@ -113,23 +119,23 @@
         although I wasn’t a fag. Apart from my father’s dashing good looks, I
         inherited his love for women. My father loved women. He loved them a
         little too much. I don’t blame my mother for hating him. I can say this;
-        he died <em>doing</em> what he loved. As I walk through the neighborhood,
-        towards town, I pass by a park. I see a girl there, sitting on a swing.
-        She’s surrounded by three other girls. I can’t make out what they're
-        saying, but it’s a familiar scene. I know those three girls. Not that I
-        know them personally, but I know the type. My mother is away from home
-        quite often. Often enough, and long enough, for me to enjoy myself when
-        I know no one's watching. It’s a nightly ritual. Those three girls
-        standing there. Those girls. The type of girls that often frequent my
-        imagination during my nighttime activities. The type of girls who would
-        surround her on the swing, full intimidation, perfect formation. I'm
-        sure they aren't friends. I stop and watch. From afar. “Hey! I just love
-        your blouse…” “Yeah! Yeah! I like your leggings too! So colorful!
-        They're just perfect, you must tell me where you got them!” “You guys
-        are so funny… why would you ever want to dress like a dyke, she looks
-        hilarious!” “Hahaha we're just kidding, I could never. What a queer… and
-        look at that blank stare on her face, it's so hideous!” The girls
-        continue with their insults, I watch the proceedings from a safe
+        he died <em>doing</em> what he loved. As I walk through the
+        neighborhood, towards town, I pass by a park. I see a girl there,
+        sitting on a swing. She’s surrounded by three other girls. I can’t make
+        out what they're saying, but it’s a familiar scene. I know those three
+        girls. Not that I know them personally, but I know the type. My mother
+        is away from home quite often. Often enough, and long enough, for me to
+        enjoy myself when I know no one's watching. It’s a nightly ritual. Those
+        three girls standing there. Those girls. The type of girls that often
+        frequent my imagination during my nighttime activities. The type of
+        girls who would surround her on the swing, full intimidation, perfect
+        formation. I'm sure they aren't friends. I stop and watch. From afar.
+        “Hey! I just love your blouse…” “Yeah! Yeah! I like your leggings too!
+        So colorful! They're just perfect, you must tell me where you got them!”
+        “You guys are so funny… why would you ever want to dress like a dyke,
+        she looks hilarious!” “Hahaha we're just kidding, I could never. What a
+        queer… and look at that blank stare on her face, it's so hideous!” The
+        girls continue with their insults, I watch the proceedings from a safe
         distance, interested in the direction things are going. They begin to
         grab her shirt, lifting it up, exposing her. One of the girls pulls out
         a small pocket knife, the other two hold her arms up. It’s interesting.
@@ -336,6 +342,14 @@
         at her now. Look at her face close up again, so I can see what the deal
         is. She's lying face down in the snow this time, that's unusual. Oh
         wait. She's dead. It’s beautiful.
+      </p>
+      <p style="text-align: center; margin-top: 2rem">
+        <a
+          href="howicameupwiththenames.html"
+          style="text-decoration: none; font-weight: 600"
+          data-t="their_names"
+          >Their names</a
+        >
       </p>
     </div>
   </body>

@@ -45,14 +45,40 @@
       .audio-player audio::-webkit-media-controls-panel {
         background: #663300;
       }
+      .lang-toggle {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 0.4rem 0.8rem;
+        font-family: "Courier New", Courier, mono;
+        font-size: 12px;
+        font-weight: 600;
+        background: #663300;
+        color: #fff;
+        border: 2px solid #000;
+        border-radius: 999px;
+        cursor: pointer;
+        margin: 0.5rem;
+      }
+      .lang-toggle:hover {
+        background: #552200;
+      }
     </style>
   </head>
   <body>
+    <button class="lang-toggle" id="lang-toggle">EN</button>
     <iframe
       name="main"
       id="main-frame"
       class="content-frame"
       src="home.html"
+      onload="
+        try {
+          this.contentWindow.applyTranslations &&
+            this.contentWindow.applyTranslations();
+        } catch (e) {}
+      "
     ></iframe>
 
     <script>
@@ -71,6 +97,31 @@
     </div>
 
     <script>
+      (function () {
+        function updateToggleLabel() {
+          var lang = localStorage.getItem("vday_lang") || "en";
+          document.getElementById("lang-toggle").textContent =
+            lang === "en" ? "EN" : "FR";
+        }
+        document
+          .getElementById("lang-toggle")
+          .addEventListener("click", function () {
+            var lang = localStorage.getItem("vday_lang") || "en";
+            var newLang = lang === "en" ? "fr" : "en";
+            localStorage.setItem("vday_lang", newLang);
+            updateToggleLabel();
+            var frame = document.getElementById("main-frame");
+            if (frame.contentWindow) {
+              if (frame.contentWindow.applyTranslations) {
+                frame.contentWindow.applyTranslations();
+              }
+              frame.contentWindow.dispatchEvent(
+                new CustomEvent("languagechange"),
+              );
+            }
+          });
+        updateToggleLabel();
+      })();
       window.playSong = function (src, title) {
         var audio = document.getElementById("global-audio");
         var nowPlaying = document.getElementById("now-playing");
