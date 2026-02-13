@@ -107,11 +107,11 @@
           } catch (e) {}
           try {
             var href = frame.contentWindow.location.href;
-            var hide =
-              href.indexOf('enter.html') !== -1 ||
-              href.indexOf('wait.html') !== -1;
+            var onIntro = href.indexOf('enter.html') !== -1 || href.indexOf('wait.html') !== -1;
+            var noSong = typeof window.isSongPlaying === 'function' && !window.isSongPlaying();
+            var hide = onIntro || noSong;
             document.getElementById('player-box').className =
-              'audio-player hidden';
+              'audio-player' + (hide ? ' hidden' : '');
             document.getElementById('lang-toggle').className =
               'lang-toggle' + (hide ? ' hidden' : '');
           } catch (e) {
@@ -207,6 +207,7 @@
           },
         ];
         var currentIndex = -1;
+        window.isSongPlaying = function () { return currentIndex >= 0; };
         var audio = document.getElementById("global-audio");
         var playerBox = document.getElementById("player-box");
         var nowPlaying = document.getElementById("now-playing");
