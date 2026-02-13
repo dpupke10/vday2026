@@ -11,7 +11,7 @@
       body {
         margin: 0;
         padding: 0;
-        background: #cab68f;
+        background: #000000;
         font-family: "Courier New", Courier, mono;
       }
       .content-frame {
@@ -24,7 +24,7 @@
         position: fixed;
         bottom: 0;
         right: 0;
-        background: #663300;
+        background: #c4a8e0;
         color: #ffffff;
         padding: 0.5rem 1rem;
         font-family: "Courier New", Courier, mono;
@@ -37,13 +37,35 @@
         font-weight: 600;
         margin-bottom: 0.25rem;
       }
-      .audio-player audio {
-        width: 100%;
-        height: 32px;
+      .audio-player .player-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
         margin-top: 0.25rem;
       }
+      .audio-player .skip-btn {
+        background: none;
+        border: none;
+        color: #000;
+        font-family: "Courier New", Courier, mono;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 0.25rem;
+        line-height: 1;
+      }
+      .audio-player .skip-btn:hover {
+        opacity: 0.7;
+      }
+      .audio-player audio {
+        flex: 1;
+        height: 32px;
+        min-width: 0;
+      }
       .audio-player audio::-webkit-media-controls-panel {
-        background: #663300;
+        background: #c4a8e0;
+      }
+      .audio-player.hidden {
+        display: none;
       }
       .lang-toggle {
         position: fixed;
@@ -54,7 +76,7 @@
         font-family: "Courier New", Courier, mono;
         font-size: 12px;
         font-weight: 600;
-        background: #663300;
+        background: #c4a8e0;
         color: #fff;
         border: 2px solid #000;
         border-radius: 999px;
@@ -62,22 +84,42 @@
         margin: 0.5rem;
       }
       .lang-toggle:hover {
-        background: #552200;
+        background: #b898d4;
+      }
+      .lang-toggle.hidden {
+        display: none;
       }
     </style>
   </head>
   <body>
-    <button class="lang-toggle" id="lang-toggle">EN</button>
+    <button class="lang-toggle hidden" id="lang-toggle">EN</button>
     <iframe
       name="main"
       id="main-frame"
       class="content-frame"
-      src="home.html"
+      src="enter.html"
       onload="
-        try {
-          this.contentWindow.applyTranslations &&
-            this.contentWindow.applyTranslations();
-        } catch (e) {}
+        (function () {
+          var frame = document.getElementById('main-frame');
+          try {
+            frame.contentWindow.applyTranslations &&
+              frame.contentWindow.applyTranslations();
+          } catch (e) {}
+          try {
+            var href = frame.contentWindow.location.href;
+            var hide =
+              href.indexOf('enter.html') !== -1 ||
+              href.indexOf('wait.html') !== -1;
+            document.getElementById('player-box').className =
+              'audio-player hidden';
+            document.getElementById('lang-toggle').className =
+              'lang-toggle' + (hide ? ' hidden' : '');
+          } catch (e) {
+            document.getElementById('player-box').className =
+              'audio-player hidden';
+            document.getElementById('lang-toggle').className = 'lang-toggle';
+          }
+        })()
       "
     ></iframe>
 
@@ -91,9 +133,13 @@
       })();
     </script>
 
-    <div class="audio-player" id="player-box">
+    <div class="audio-player hidden" id="player-box">
       <div class="now-playing" id="now-playing">—</div>
-      <audio id="global-audio" controls></audio>
+      <div class="player-controls">
+        <button class="skip-btn" id="prev-btn" title="Previous">←</button>
+        <audio id="global-audio" controls></audio>
+        <button class="skip-btn" id="next-btn" title="Next">→</button>
+      </div>
     </div>
 
     <script>
@@ -122,13 +168,119 @@
           });
         updateToggleLabel();
       })();
-      window.playSong = function (src, title) {
+      (function () {
+        var PLAYLIST = [
+          {
+            src: "songs/song1.mp3",
+            title: "A Duel - Pablo's Eye",
+            duration: "5:29",
+          },
+          {
+            src: "songs/song2.mp3",
+            title: "A Warm Place - Nine Inch Nails",
+            duration: "3:23",
+          },
+          {
+            src: "songs/song3.mp3",
+            title: "Printemps émeraude - Alcest",
+            duration: "7:19",
+          },
+          {
+            src: "songs/song4.mp3",
+            title: "Arboretum - Unwound",
+            duration: "4:55",
+          },
+          {
+            src: "songs/song5.mp3",
+            title: "Nothing Else Matters - Bassvictim",
+            duration: "2:55",
+          },
+          {
+            src: "songs/song6.mp3",
+            title: "My Girl - The Rolling Stones",
+            duration: "2:38",
+          },
+          {
+            src: "songs/song7.mp3",
+            title: "Please Stay - The Crying Shames",
+            duration: "3:14",
+          },
+        ];
+        var currentIndex = -1;
         var audio = document.getElementById("global-audio");
+        var playerBox = document.getElementById("player-box");
         var nowPlaying = document.getElementById("now-playing");
-        audio.src = src;
-        audio.play();
-        nowPlaying.textContent = title || "Playing...";
-      };
+        function showPlayer() {
+          playerBox.classList.remove("hidden");
+        }
+        function hidePlayer() {
+          playerBox.classList.add("hidden");
+        }
+        function updateDisplay() {
+          var s = PLAYLIST[currentIndex];
+          var parts = [
+            currentIndex + 1 + "/" + PLAYLIST.length,
+            s.title,
+            "(" + s.duration + ")",
+          ];
+          nowPlaying.textContent = parts.join(" — ");
+        }
+        function playByIndex(index) {
+          if (index < 0 || index >= PLAYLIST.length) return;
+          currentIndex = index;
+          var s = PLAYLIST[currentIndex];
+          audio.src = s.src;
+          audio.play();
+          updateDisplay();
+        }
+        audio.addEventListener("play", showPlayer);
+        audio.addEventListener("ended", function () {
+          if (currentIndex >= 0) {
+            var next = (currentIndex + 1) % PLAYLIST.length;
+            playByIndex(next);
+          }
+        });
+        document
+          .getElementById("prev-btn")
+          .addEventListener("click", function () {
+            if (currentIndex < 0) return;
+            if (currentIndex === 0) {
+              if (audio.currentTime > 3) {
+                audio.currentTime = 0;
+                audio.play();
+              } else {
+                playByIndex(PLAYLIST.length - 1);
+              }
+            } else {
+              playByIndex(currentIndex - 1);
+            }
+          });
+        document
+          .getElementById("next-btn")
+          .addEventListener("click", function () {
+            if (currentIndex < 0) return;
+            var next = (currentIndex + 1) % PLAYLIST.length;
+            playByIndex(next);
+          });
+        window.playSong = function (src, title, duration, track, total) {
+          var idx = PLAYLIST.findIndex(function (s) {
+            return s.src === src;
+          });
+          if (idx >= 0) {
+            playByIndex(idx);
+          } else {
+            currentIndex = track ? parseInt(track, 10) - 1 : 0;
+            if (currentIndex < 0) currentIndex = 0;
+            audio.src = src;
+            audio.play();
+            var parts = [];
+            if (track && total) parts.push(track + "/" + total);
+            parts.push(title || "Playing...");
+            if (duration) parts.push("(" + duration + ")");
+            nowPlaying.textContent = parts.join(" — ");
+          }
+        };
+      })();
     </script>
   </body>
 </html>

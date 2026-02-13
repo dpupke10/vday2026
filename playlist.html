@@ -31,11 +31,14 @@
         text-decoration: none;
         font-weight: 600;
       }
+      .header a:hover {
+        text-decoration: underline;
+      }
       .content {
         margin: auto;
         width: 800px;
         max-width: 90%;
-        text-align: left;
+        text-align: center;
         font-family: "Courier New", Courier, mono;
         font-size: 1.2rem;
         color: #fff;
@@ -56,6 +59,13 @@
       }
       .song-list {
         margin-top: 1.5rem;
+      }
+      .cigarette-icon {
+        display: block;
+        margin: 3rem auto 2rem;
+        width: 48px;
+        height: 64px;
+        opacity: 0.6;
       }
     </style>
   </head>
@@ -90,49 +100,71 @@
           class="song-link"
           data-src="songs/song1.mp3"
           data-title="A Duel - Pablo's Eye"
-          >A Duel -</a
-        >
-        Pablo's Eye (5:29) <br />
+          data-duration="5:29"
+          data-track="1"
+          data-total="7"
+          >A Duel - Pablo's Eye (5:29) — 1/7</a
+        ><br />
         <a
           href="#"
           class="song-link"
           data-src="songs/song2.mp3"
           data-title="A Warm Place - Nine Inch Nails"
-          >A Warm Place -</a
-        >
-        Nine Inch Nails (3:23) <br />
+          data-duration="3:23"
+          data-track="2"
+          data-total="7"
+          >A Warm Place - Nine Inch Nails (3:23) — 2/7</a
+        ><br />
         <a
           href="#"
           class="song-link"
           data-src="songs/song3.mp3"
           data-title="Printemps émeraude - Alcest"
-          >Printemps émeraude -</a
-        >
-        Alcest (7:19)<br />
+          data-duration="7:19"
+          data-track="3"
+          data-total="7"
+          >Printemps émeraude - Alcest (7:19) — 3/7</a
+        ><br />
         <a
           href="#"
           class="song-link"
           data-src="songs/song4.mp3"
           data-title="Arboretum - Unwound"
-          >Arboretum -</a
-        >
-        Unwound (4:55)<br />
+          data-duration="4:55"
+          data-track="4"
+          data-total="7"
+          >Arboretum - Unwound (4:55) — 4/7</a
+        ><br />
         <a
           href="#"
           class="song-link"
           data-src="songs/song5.mp3"
           data-title="Nothing Else Matters - Bassvictim"
-          >Nothing Else Matters -</a
-        >
-        Bassvictim (2:55) <br />
+          data-duration="2:55"
+          data-track="5"
+          data-total="7"
+          >Nothing Else Matters - Bassvictim (2:55) — 5/7</a
+        ><br />
         <a
           href="#"
           class="song-link"
           data-src="songs/song6.mp3"
           data-title="My Girl - The Rolling Stones"
-          >My Girl -</a
-        >
-        The Rolling Stones (2:38) <br />
+          data-duration="2:38"
+          data-track="6"
+          data-total="7"
+          >My Girl - The Rolling Stones (2:38) — 6/7</a
+        ><br />
+        <a
+          href="#"
+          class="song-link"
+          data-src="songs/song7.mp3"
+          data-title="Please Stay - The Crying Shames"
+          data-duration="3:14"
+          data-track="7"
+          data-total="7"
+          >Please Stay - The Crying Shames (3:14) — 7/7</a
+        ><br />
       </div>
     </div>
 
@@ -169,12 +201,12 @@
     </div>
 
     <script>
-      function playSong(src, title) {
+      function playSong(src, title, duration, track, total) {
         if (
           window.parent !== window &&
           typeof window.parent.playSong === "function"
         ) {
-          window.parent.playSong(src, title);
+          window.parent.playSong(src, title, duration, track, total);
         } else {
           var player = document.getElementById("local-player");
           var audio = document.getElementById("local-audio");
@@ -188,9 +220,14 @@
       document.querySelectorAll(".song-link").forEach(function (link) {
         link.addEventListener("click", function (e) {
           e.preventDefault();
-          playSong(this.dataset.src, this.dataset.title);
+          var d = link.dataset;
+          playSong(d.src, d.title, d.duration, d.track, d.total);
         });
       });
     </script>
+    <svg class="cigarette-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="10" width="16" height="4" rx="0.5" fill="#f5f0e8" />
+      <rect x="18" y="10.5" width="2.5" height="3" fill="#8b7355" />
+    </svg>
   </body>
 </html>

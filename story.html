@@ -34,9 +34,9 @@
         margin: auto;
         width: 800px;
         max-width: 90%;
-        text-align: left;
+        text-align: center;
         font-family: "Courier New", Courier, mono;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         color: #fff;
         padding: 2rem 0;
       }
@@ -45,12 +45,28 @@
         color: #fff;
         font-size: 1.5em;
       }
+      .home-link,
+      .their-names-link {
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .home-link:hover,
+      .their-names-link:hover {
+        text-decoration: underline;
+      }
       .placeholder {
-        font-size: 2em;
+        font-size: 1.2rem;
         text-align: center;
         padding: 4rem 2rem;
         color: #fff;
         font-family: "Courier New", Courier, mono;
+      }
+      .cigarette-icon {
+        display: block;
+        margin: 3rem auto 2rem;
+        width: 48px;
+        height: 64px;
+        opacity: 0.6;
       }
     </style>
   </head>
@@ -63,19 +79,28 @@
       });
     </script>
     <div class="header">
-      <a
-        href="home.html"
-        data-t="home"
-        style="text-decoration: none; font-weight: 600"
-        >Home</a
-      >
+      <a href="home.html" data-t="home" class="home-link">Home</a>
     </div>
 
     <div class="content">
       <h2 data-t="title">
-        We're Red and It's Perfect. She's dead, and it's beautiful.
+        We're Red and It's Perfect. She's Dead, and It's Beautiful.
       </h2>
       <p class="placeholder" data-t="content">
+        Note: This story is not about us, has nothing to do with us, and not
+        inspired by us. It's just an overly edgy, offensive, kind of gross short
+        story that I wrote. I don't know if you'll really like it, but I wrote
+        it because maybe one day I want to be a writer. A real writer who writes
+        real things that I think are interesting and thought provoking. This is
+        my first ever attempt at anything real, that I sort of think is
+        okay-ish. I put it in here, because maybe it is a landmark for my life,
+        maybe it is just terrible and way too overt. I'm nervous to share a lot
+        of my thoughts out loud or in writing. I think sometimes there is
+        something wrong with me. But it is here because you are everything. You
+        are my everything, so why not share with you something that means a lot
+        to me. I hope it is not too hard to get through, and makes you feel
+        included in on my brain. <br />
+        <br />
         Tears well up in my eyes. It hurts, why. Everyone's laughing at me. I
         can feel them staring at me. I was wearing my mothers gown. At school.
         How did this happen? The entire school was there, in the hall, in the
@@ -346,11 +371,15 @@
       <p style="text-align: center; margin-top: 2rem">
         <a
           href="howicameupwiththenames.html"
-          style="text-decoration: none; font-weight: 600"
+          class="their-names-link"
           data-t="their_names"
           >Their names</a
         >
       </p>
     </div>
+    <svg class="cigarette-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="10" width="16" height="4" rx="0.5" fill="#f5f0e8" />
+      <rect x="18" y="10.5" width="2.5" height="3" fill="#8b7355" />
+    </svg>
   </body>
 </html>

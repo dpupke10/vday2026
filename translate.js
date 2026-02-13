@@ -33,5 +33,11 @@
         }
       }
     });
+    if (t && document.body.dataset.translatePage) {
+      var tr = t[document.body.dataset.translatePage];
+      if (tr && tr.pageTitle) {
+        document.title = l === "fr" && tr.pageTitle.fr ? tr.pageTitle.fr : (tr.pageTitle.en || document.title);
+      }
+    }
   };
 })();

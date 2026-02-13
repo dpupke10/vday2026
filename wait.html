@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (window === window.top) {
+        window.location.replace("index.html?page=wait.html");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Priya</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: #ffb6c1;
+        font-family: "Courier New", Courier, monospace;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem;
+      }
+      .continue-link {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #000;
+        text-decoration: none;
+      }
+      .continue-link:hover {
+        text-decoration: underline;
+      }
+      .text-content {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body data-translate-page="wait">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.applyTranslations) applyTranslations();
+      });
+    </script>
+    <div class="text-content" data-t="content">
+      It's Valentine's Day. <br /><br />I stare down the bottom of an empty pint glass. <br />There's two of them, side by side. <br />I drank two, <br />I'll drink another. <br />Maybe some more. <br />They're next to each other. <br />It's like I'm looking down the barrel of a shotgun, <br />I wish. <br />They're next to each other, <br />There's foam. <br />It's drying up. <br />It's a great day. <br />Because we are in love. <br />I'm here, <br />and I have a gun. <br />Just kidding. <br />It's Valentine's Day. <br />But I wake up, <br />with a cup... that you made. <br />And I have you, <br />we are together. <br />I wish. <br />We aren't next to each other, but we are. <br />Today's a great day. <br />Because we are in love. <br />Want to see what I <a href="home.html" class="continue-link">made?</a> <br />
+    </div>
+  </body>
+</html>

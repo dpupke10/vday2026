@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (window === window.top) {
+        window.location.replace("index.html?page=agoodpoem.html");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Another Poem</title>
+    <style type="text/css">
+      body {
+        background: #000;
+        color: #ffffff;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        text-align: center;
+        font-family: "Courier New", Courier, mono;
+        color: #ffffff;
+        font-size: 22px;
+        padding: 1rem 0;
+      }
+      .header a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        margin: auto;
+        width: 800px;
+        max-width: 90%;
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.2rem;
+        color: #fff;
+        padding: 2rem 0;
+      }
+      .content h2 {
+        font-family: "Courier New", Courier, mono;
+        color: #fff;
+        font-size: 1.5em;
+        margin-bottom: 1.5rem;
+      }
+      .cigarette-icon {
+        display: block;
+        margin: 3rem auto 2rem;
+        width: 48px;
+        height: 64px;
+        opacity: 0.6;
+      }
+      .page-photo {
+        display: block;
+        margin: 3rem auto 2rem;
+        max-width: 280px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body data-translate-page="agoodpoem">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.applyTranslations) applyTranslations();
+      });
+    </script>
+    <div class="header">
+      <a href="home.html" data-t="home">Home</a>
+    </div>
+    <div class="content">
+      <h2 data-t="title">I'm a negative guy.</h2>
+      <p data-t="content">
+        I'm a negative guy. <br />
+        I'm a drunk. I'm a 'writer', but all I write about is my complaints,
+        <br />
+        my problems. <br />
+        Feelings. <br />
+        But as a man, it's disgusting. <br />
+        I fight a lot. <br />
+        Violence, <br />
+        It's my least favorite form of communication. <br />
+        But it seems to be one of my most utilized. <br />
+        I hate it. <br />
+        <br />
+        As a man, <br />
+        It's expected. <br />
+        Or so they would say. <br />
+        But to me, it's necessary, and it can be beautiful. <br />
+        I throw that word around a lot. <br />
+        I should save it, only when necessary. <br />
+        But, <br />
+        I've been using it a lot lately. <br />
+        And it's been necessary. <br />
+        Because what other word could be used? <br />
+        <br />
+        I mean, <br />
+        just look.
+      </p>
+      <img src="photos/photo9.jpeg" alt="Photo 9" class="page-photo" />
+    </div>
+    <svg
+      class="cigarette-icon"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="2" y="10" width="16" height="4" rx="0.5" fill="#f5f0e8" />
+      <rect x="18" y="10.5" width="2.5" height="3" fill="#8b7355" />
+    </svg>
+  </body>
+</html>

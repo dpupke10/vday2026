@@ -11,8 +11,8 @@
     <title>Home</title>
     <style type="text/css">
       body {
-        background: #cc9900;
-        color: #000000;
+        background: #000;
+        color: #ffffff;
         font-family: "Courier New", Courier, monospace;
         margin: 0;
         padding: 2rem;
@@ -20,43 +20,64 @@
       }
       .bigwhite {
         font-family: "Courier New", Courier, mono;
-        font-size: 22px;
+        font-size: 1.2rem;
         color: #ffffff;
       }
       .bigboldwhite {
         font-family: "Courier New", Courier, mono;
-        font-size: 22px;
+        font-size: 1.5em;
         color: #ffffff;
         font-weight: 600;
       }
       a:link {
         font-family: "Courier New", Courier, mono;
-        font-size: 24px;
-        color: #000000;
+        font-size: 1.2rem;
+        color: #ffffff;
         font-weight: 600;
         text-decoration: none;
       }
       a:visited {
         font-family: "Courier New", Courier, mono;
-        font-size: 24px;
-        color: #000000;
+        font-size: 1.2rem;
+        color: #ffffff;
         font-weight: 600;
         text-decoration: none;
       }
       a:hover {
         font-family: "Courier New", Courier, mono;
-        font-size: 24px;
-        color: #000000;
+        font-size: 1.2rem;
+        color: #ffffff;
         font-weight: 600;
         text-decoration: underline;
       }
-      table {
-        margin: 2rem auto;
-        width: 400px;
+      .title-link {
+        color: #ffffff;
+        text-decoration: none;
       }
-      td {
-        padding: 0.5rem 0;
+      .title-link:hover {
+        text-decoration: underline;
+      }
+      .link-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4.5rem;
+        margin: 2rem auto;
+        width: 95%;
+        max-width: 800px;
+      }
+      .link-grid > * {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
+      }
+      .home-photo {
+        display: block;
+        margin: 2rem auto;
+        max-width: 400px;
+        width: 100%;
+        height: auto;
       }
     </style>
   </head>
@@ -68,15 +89,18 @@
         if (window.applyTranslations) applyTranslations();
       });
     </script>
-    <p class="bigboldwhite" data-t="title">For Priya</p>
+    <p class="bigboldwhite">
+      <a href="enter.html" data-t="title" class="title-link">For Priya</a>
+    </p>
+    <img src="photos/photo14.jpeg" alt="" class="home-photo" />
     <p class="bigwhite" data-t="intro1">
       This is a site created for my love on our first Valentine's Day as a
       couple. We cannot be together. She is very far away. I still have many
       things I want to give her. Do for her. Say to her. I can express myself in
-      the only ways I know how. I don't have much in life, even though I've
-      given been everything. But I have her, and that is what matters. When you
-      have something like that. Special, you do what you can not to let go of
-      it. I will continue to devote myself to her. Give, give give give.
+      the only ways I know how. I don't have much in life, even though I've been
+      given everything. But I have her, and that is what matters. When you have
+      something like that. Special, you do what you can not to let go of it. I
+      will continue to devote myself to her. Give, give give give.
     </p>
     <p class="bigwhite" data-t="intro2">
       I've collected some things here. Things I've worked on. For you. About
@@ -112,33 +136,40 @@
       Priya. I hope you find it interesting, enjoyable, special, visceral, and
       cool.
     </p>
-    <table align="center">
-      <tr>
-        <td>
-          <a href="playlist.html" data-t="link_playlist"
-            ><b
-              >- A playlist of music that is special to me that I want you to
-              hear whenever you visit this site</b
-            ></a
-          >
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="drawing.html" data-t="link_drawing"
-            ><b>- Through my eyes.</b></a
-          >
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="story.html" data-t="link_story"
-            ><b
-              >- A story about some twisted romance - Happy Valentine's Day</b
-            ></a
-          >
-        </td>
-      </tr>
-    </table>
+    <img src="photos/photo10.jpeg" alt="" class="home-photo" />
+    <div class="link-grid">
+      <a href="cat.html" data-t="link_cat"
+        ><b>- Cat. If you want one, I'll get you an entire litter.</b></a
+      >
+      <a href="playlist.html" data-t="link_playlist"
+        ><b
+          >- A playlist of music that is special to me that I want you to hear
+          whenever you visit this site.</b
+        ></a
+      >
+      <a href="poem.html" data-t="link_poem"><b>- Poem.</b></a>
+      <a href="agoodpoem.html" data-t="link_poem2"
+        ><b
+          >- Another poem, for you, and it's full of love. No negativity.</b
+        ></a
+      >
+      <a href="drawing.html" data-t="link_drawing"><b>- Through my eyes.</b></a>
+      <a href="recipes.html" data-t="link_recipes"
+        ><b
+          >- A few recipes I like, maybe for you to cook, or for me to cook for
+          you.</b
+        ></a
+      >
+      <a href="archives.html" data-t="link_archives"
+        ><b>- From the archives, of my heart.</b></a
+      >
+      <a href="story.html" data-t="link_story"
+        ><b
+          >- A story about some twisted romance. (Rated 2.5/5 by the great
+          writing critic KP)</b
+        ></a
+      >
+      <a href="secret.html" data-t="link_secret"><b>- A secret.</b></a>
+    </div>
   </body>
 </html>

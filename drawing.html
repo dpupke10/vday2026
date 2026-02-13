@@ -31,13 +31,16 @@
         text-decoration: none;
         font-weight: 600;
       }
+      .header a:hover {
+        text-decoration: underline;
+      }
       .content {
         margin: auto;
         width: 800px;
         max-width: 90%;
-        text-align: left;
+        text-align: center;
         font-family: "Courier New", Courier, mono;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         color: #fff;
         padding: 2rem 0;
       }
@@ -73,7 +76,7 @@
         background: rgba(0, 0, 0, 0.5);
         color: #fff;
         font-family: "Courier New", Courier, mono;
-        font-size: 1.2em;
+        font-size: 1.2rem;
         padding: 1rem;
         display: flex;
         align-items: center;
@@ -84,6 +87,13 @@
         word-wrap: break-word;
         overflow-wrap: break-word;
         min-width: 0;
+      }
+      .cigarette-icon {
+        display: block;
+        margin: 3rem auto 2rem;
+        width: 48px;
+        height: 64px;
+        opacity: 0.6;
       }
     </style>
   </head>
@@ -131,7 +141,7 @@
         <div class="photo-cell">
           <img src="photos/photo4.jpeg" alt="Photo 4" />
           <div class="photo-caption" data-t="caption4">
-            See? Not every photo has to be in black in white. Because in black
+            See? Not every photo has to be in black and white. Because in black
             and white, you can feel muted. I can't make out your golden hair,
             cool blue eyes, what color nails you had me pick out for you. The
             color of your lips, blouse, or jeans. You look best in color.
@@ -163,7 +173,7 @@
           </div>
         </div>
         <div class="photo-cell">
-          <img src="photos/phot8.jpeg" alt="Photo 8" />
+          <img src="photos/photo8.jpeg" alt="Photo 8" />
           <div class="photo-caption" data-t="caption8">
             My bed's empty. She's not here. I miss her. I wish she was here. I
             wish she was here now. But she left, the aftermath.
@@ -171,5 +181,9 @@
         </div>
       </div>
     </div>
+    <svg class="cigarette-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="10" width="16" height="4" rx="0.5" fill="#f5f0e8" />
+      <rect x="18" y="10.5" width="2.5" height="3" fill="#8b7355" />
+    </svg>
   </body>
 </html>

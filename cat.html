@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      if (window === window.top) {
+        window.location.replace("index.html?page=cat.html");
+      }
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat</title>
+    <style type="text/css">
+      body {
+        background: #000;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        text-align: center;
+        font-family: "Courier New", Courier, mono;
+        color: #ffffff;
+        font-size: 22px;
+        padding: 1rem 0;
+      }
+      .header a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
+      }
+      .header a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        margin: auto;
+        width: 800px;
+        max-width: 90%;
+        text-align: center;
+        font-family: "Courier New", Courier, mono;
+        font-size: 1.2rem;
+        color: #fff;
+        padding: 2rem 0;
+      }
+      .content h2 {
+        font-family: "Courier New", Courier, mono;
+        color: #fff;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      .cigarette-icon {
+        display: block;
+        margin: 3rem auto 2rem;
+        width: 48px;
+        height: 64px;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body data-translate-page="cat">
+    <script src="translations.js"></script>
+    <script src="translate.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.applyTranslations) applyTranslations();
+      });
+    </script>
+    <div class="header">
+      <a href="home.html" data-t="home">Home</a>
+    </div>
+    <div class="content">
+      <h2 data-t="title">
+        A story about a cat and a man who lost his woman, so why should he go to
+        church?
+      </h2>
+      <p data-t="content">
+        He was a quick-witted guy, or wait, was he a cat? I can't remember. He
+        walked into the bar, the one right on the corner of Crosby and Spring
+        St. Or was it a cafe? bistro? Again, I can't remember. His claws were
+        sharp, just like his mind. I liked his coat, I admired it. He sat down
+        at the stool furthest from the door. Furthest from me. You know, I like
+        sitting closest to the door. A quick escape, just incase things go
+        south. I was quite the troublemaker after all. I mean trouble liked to
+        follow me, or I guess I could find it pretty easily. Whatever. He orders
+        his usual. Jack on the rocks. Classic. It was 2:30 on a Sunday
+        afternoon. He turns towards me. I avoid his gaze. He's sharp remember, I
+        don't like making eye contact with those types. He could probably read
+        me with a quick glance. I don't like it one bit. Yuck. I had a hundred
+        dollars in my pocket. Every last cent for her. She never showed up, and
+        I went home frustrated. As usual. The cat left soon after me, He never
+        finished his drink, his coat drapped against the dirty sidewalk, that
+        bothers me. I skipped church, evening service. What's even the point?
+        She never showed, so why should I repent my sins? All I did today was
+        drink, sounds pretty holy to me. I spend my night watching cable, I like
+        it when the news comes on. The lady anchor reminds me of her, boy is she
+        a looker. But it's not enough. I go to sleep. Frustrated. Im sure that
+        cat slept like a fucking baby. Wait, I should say a kitten. Haha.
+      </p>
+    </div>
+    <svg
+      class="cigarette-icon"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="2" y="10" width="16" height="4" rx="0.5" fill="#f5f0e8" />
+      <rect x="18" y="10.5" width="2.5" height="3" fill="#8b7355" />
+    </svg>
+  </body>
+</html>
